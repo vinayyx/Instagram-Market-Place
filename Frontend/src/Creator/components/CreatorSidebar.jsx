@@ -52,11 +52,6 @@ const menuItems = [
     icon: Banknote
   },
   {
-    title: "Analytics",
-    path: "/creator/analytics",
-    icon: ChartNoAxesCombined
-  },
-  {
     title: "My Profile",
     path: "/creator/profile",
     icon: User

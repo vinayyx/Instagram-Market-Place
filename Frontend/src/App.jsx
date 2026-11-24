@@ -13,6 +13,11 @@ import ExploreCampaigns from "./Creator/pages/ExploreCampaigns";
 import MyApplications from "./Creator/pages/MyApplications";
 import ActiveCampaigns from "./Creator/pages/ActiveCampaigns";
 import MyContent from "./Creator/pages/MyContent";
+import Earnings from "./Creator/components/Earnings";
+import Withdrawals from "./Creator/pages/Withdrawals";
+import MyProfile from "./Creator/pages/MyProfile";
+import Settings from "./Creator/pages/Settings";
+
 
 //IMPORTS FOR BRAND
 import BrandSignup from "./Brand/Auth/BrandSinup";
@@ -39,6 +44,10 @@ function App() {
           <Route path="applications" element={<MyApplications />} />
           <Route path="active-campaigns" element={<ActiveCampaigns />} />
           <Route path="content" element={<MyContent />} />
+          <Route path="earnings" element={<Earnings />} />
+          <Route path="withdrawals" element={<Withdrawals />} />
+          <Route path="profile" element={<MyProfile />} />
+          <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>
     </div>

@@ -1,1 +1,16 @@
 @import "tailwindcss";
+
+
+
+/* Prevent automatic zoom on input focus in iOS Safari */
+input,
+textarea,
+select {
+  font-size: 16px !important;
+}
+
+/* Prevent unwanted text size adjustments */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
