@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 
 import { PLATFORM_ICONS } from "../Components/Icon/PlatformIcons";
-import { creators } from "../Data/creatorsData";
+import { creators } from "../../Brand/Data/creatorsData";
 
 const FALLBACK_COVER =
   "data:image/svg+xml;utf8," +

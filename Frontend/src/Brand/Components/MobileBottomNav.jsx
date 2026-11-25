@@ -10,6 +10,7 @@ const navItems = [
   { label: "Profile", path: "/brand/profile", icon: User },
 ];
 
+
 // iOS jaisa spring (thoda overshoot karke settle hota hai)
 const SPRING = "cubic-bezier(0.32, 1.45, 0.5, 1)";
 
