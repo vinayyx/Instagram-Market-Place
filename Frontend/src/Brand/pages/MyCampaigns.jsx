@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Plus, Megaphone, ArrowUpRight } from "lucide-react";
 
-import { campaignsData } from "../Data/campaignsData";
+import { campaignsData } from "../../Brand/Data/campaignsData";
 
 import CampaignStats from "../Components/MyCampaigns/CampaignStats";
 import CampaignTabs from "../Components/MyCampaigns/CampaignTabs";

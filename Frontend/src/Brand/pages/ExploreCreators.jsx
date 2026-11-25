@@ -5,7 +5,7 @@ import { Users, Bookmark, Sparkles } from "lucide-react";
 import {
   creators,
   creatorCategories,
-} from "../Data/creatorsData";
+} from "../../Brand/Data/creatorsData";
 
 import CreatorStats from "../Components/ExploreCreators/CreatorStats";
 import CreatorFilters from "../Components/ExploreCreators/CreatorFilters";
