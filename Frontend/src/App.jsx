@@ -24,7 +24,7 @@ import BrandOverview from "./Brand/pages/Overview";
 import ExploreCreators from "./Brand/pages/ExploreCreators";
 import CreatorDetails from "./Brand/pages/CreatorDetails";
 import MyCampaigns from "./Brand/pages/MyCampaigns";
-import BrandCampaignDetails from "./Brand/pages/CampaignDetails.jsx";
+import BrandCampaignDetails from "./Brand/pages/BrandCampaignDetails.jsx";
 
 //LAYOUTS
 import CreatorLayout from "./Creator/layouts/CreatorLayout";

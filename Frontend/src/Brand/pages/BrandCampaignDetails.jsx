@@ -19,7 +19,7 @@ import {
 import { campaignsData } from "../Data/campaignsData";
 import { PLATFORM_ICONS } from "../Components/Icon/PlatformIcons";
 
-const CampaignDetails = () => {
+const BrandCampaignDetails = () => {
   const { campaignId } = useParams();
   const navigate = useNavigate();
 
@@ -490,4 +490,4 @@ const CampaignDetails = () => {
   );
 };
 
-export default CampaignDetails;
+export default BrandCampaignDetails;
