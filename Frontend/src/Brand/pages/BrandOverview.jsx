@@ -12,7 +12,7 @@ import {
   recentSubmissions,
   budgetData,
   recentActivities,
-} from "../../Brand/Data/overviewData"
+} from "../../BrandData/overviewData"
 
 import WelcomeHeader from "../Components/Overview/WelcomeHeader";
 import StatCard from "../Components/Overview/StatCard";

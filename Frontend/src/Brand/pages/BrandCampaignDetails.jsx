@@ -16,7 +16,7 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 
-import { campaignsData } from "../../Brand/Data/campaignsData";
+import { campaignsData } from "../../BrandData/campaignsData";
 import { PLATFORM_ICONS } from "../Components/Icon/PlatformIcons";
 
 const BrandCampaignDetails = () => {

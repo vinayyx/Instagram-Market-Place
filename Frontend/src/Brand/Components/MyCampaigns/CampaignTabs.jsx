@@ -1,4 +1,4 @@
-import { campaignStatusOptions } from "../../Data/campaignsData";
+import { campaignStatusOptions } from "../../../BrandData/campaignsData";
 
 const CampaignTabs = ({ activeTab, onChange, campaigns }) => {
   const getCount = (status) => {
