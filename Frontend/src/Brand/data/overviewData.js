@@ -1,0 +1,246 @@
+
+export const overviewStats = [
+  {
+    title: "Total Campaigns",
+    value: "24",
+    change: "+12.5%",
+    description: "Compared to last month",
+    icon: "campaigns",
+    positive: true,
+  },
+  {
+    title: "Hired Creators",
+    value: "86",
+    change: "+8.2%",
+    description: "Compared to last month",
+    icon: "creators",
+    positive: true,
+  },
+  {
+    title: "Total Views",
+    value: "2.4M",
+    change: "+18.6%",
+    description: "Across all campaigns",
+    icon: "views",
+    positive: true,
+  },
+  {
+    title: "Total Spent",
+    value: "₹48,500",
+    change: "+6.4%",
+    description: "Actual payments completed",
+    icon: "spent",
+    positive: true,
+  },
+];
+
+export const performanceData = {
+  "7 Days": [
+    { day: "Mon", views: 3200, spend: 1800 },
+    { day: "Tue", views: 4800, spend: 2400 },
+    { day: "Wed", views: 3900, spend: 2100 },
+    { day: "Thu", views: 6200, spend: 3100 },
+    { day: "Fri", views: 5500, spend: 2800 },
+    { day: "Sat", views: 8100, spend: 3900 },
+    { day: "Sun", views: 7200, spend: 3500 },
+  ],
+  "30 Days": [
+    { day: "Week 1", views: 18000, spend: 8500 },
+    { day: "Week 2", views: 26000, spend: 12000 },
+    { day: "Week 3", views: 22000, spend: 10500 },
+    { day: "Week 4", views: 35000, spend: 17500 },
+  ],
+  "90 Days": [
+    { day: "Month 1", views: 65000, spend: 28000 },
+    { day: "Month 2", views: 82000, spend: 35000 },
+    { day: "Month 3", views: 105000, spend: 42000 },
+  ],
+};
+
+export const activeCampaigns = [
+  {
+    id: "CMP-001",
+    title: "Summer Fashion Collection",
+    category: "Fashion",
+    status: "Active",
+    image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600",
+    creators: 12,
+    submissions: 8,
+    views: "245K",
+    spent: 18000,
+    budget: 30000,
+    deadline: "Dec 05, 2026",
+    progress: 68,
+  },
+  {
+    id: "CMP-002",
+    title: "Glow Up Skincare Campaign",
+    category: "Beauty",
+    status: "Active",
+    image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=600",
+    creators: 8,
+    submissions: 5,
+    views: "128K",
+    spent: 12000,
+    budget: 25000,
+    deadline: "Dec 12, 2026",
+    progress: 45,
+  },
+  {
+    id: "CMP-003",
+    title: "Lifestyle Product Launch",
+    category: "Lifestyle",
+    status: "Active",
+    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600",
+    creators: 6,
+    submissions: 3,
+    views: "86K",
+    spent: 8500,
+    budget: 20000,
+    deadline: "Dec 18, 2026",
+    progress: 32,
+  },
+];
+
+export const recentApplications = [
+  {
+    id: "APP-001",
+    name: "Aarav Sharma",
+    username: "@aaravcreates",
+    avatar: "https://i.pravatar.cc/100?img=12",
+    followers: "125K",
+    engagement: "4.8%",
+    campaign: "Summer Fashion Collection",
+    applied: "2 hours ago",
+  },
+  {
+    id: "APP-002",
+    name: "Priya Verma",
+    username: "@priyaverma",
+    avatar: "https://i.pravatar.cc/100?img=47",
+    followers: "89K",
+    engagement: "5.2%",
+    campaign: "Glow Up Skincare Campaign",
+    applied: "5 hours ago",
+  },
+  {
+    id: "APP-003",
+    name: "Rohan Mehta",
+    username: "@rohancreates",
+    avatar: "https://i.pravatar.cc/100?img=13",
+    followers: "210K",
+    engagement: "3.9%",
+    campaign: "Lifestyle Product Launch",
+    applied: "Yesterday",
+  },
+];
+
+export const topCreators = [
+  {
+    id: "CR-001",
+    name: "Priya Verma",
+    username: "@priyaverma",
+    avatar: "https://i.pravatar.cc/100?img=47",
+    followers: "89K",
+    views: "420K",
+    engagement: "5.8%",
+    campaigns: 6,
+  },
+  {
+    id: "CR-002",
+    name: "Aarav Sharma",
+    username: "@aaravcreates",
+    avatar: "https://i.pravatar.cc/100?img=12",
+    followers: "125K",
+    views: "385K",
+    engagement: "4.9%",
+    campaigns: 4,
+  },
+  {
+    id: "CR-003",
+    name: "Neha Kapoor",
+    username: "@nehakapoor",
+    avatar: "https://i.pravatar.cc/100?img=44",
+    followers: "67K",
+    views: "290K",
+    engagement: "6.1%",
+    campaigns: 5,
+  },
+];
+
+export const recentSubmissions = [
+  {
+    id: "SUB-001",
+    creator: "Priya Verma",
+    avatar: "https://i.pravatar.cc/100?img=47",
+    campaign: "Glow Up Skincare",
+    thumbnail: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=300",
+    submitted: "1 hour ago",
+    status: "Under Review",
+    views: "24.5K",
+  },
+  {
+    id: "SUB-002",
+    creator: "Aarav Sharma",
+    avatar: "https://i.pravatar.cc/100?img=12",
+    campaign: "Summer Fashion",
+    thumbnail: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=300",
+    submitted: "3 hours ago",
+    status: "Approved",
+    views: "52.8K",
+  },
+  {
+    id: "SUB-003",
+    creator: "Neha Kapoor",
+    avatar: "https://i.pravatar.cc/100?img=44",
+    campaign: "Lifestyle Launch",
+    thumbnail: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300",
+    submitted: "Yesterday",
+    status: "Under Review",
+    views: "18.2K",
+  },
+];
+
+export const budgetData = {
+  totalBudget: 150000,
+  spent: 48500,
+  pending: 12000,
+  remaining: 89500,
+  breakdown: [
+    { name: "Summer Fashion", amount: 18000 },
+    { name: "Glow Up Skincare", amount: 12000 },
+    { name: "Lifestyle Launch", amount: 8500 },
+    { name: "Other Campaigns", amount: 10000 },
+  ],
+};
+
+export const recentActivities = [
+  {
+    id: 1,
+    title: "New creator application",
+    description: "Priya Verma applied for Glow Up Skincare.",
+    time: "2 hours ago",
+    type: "application",
+  },
+  {
+    id: 2,
+    title: "New content submitted",
+    description: "Aarav Sharma submitted a campaign Reel.",
+    time: "4 hours ago",
+    type: "content",
+  },
+  {
+    id: 3,
+    title: "Campaign milestone reached",
+    description: "Summer Fashion crossed 200K views.",
+    time: "Yesterday",
+    type: "milestone",
+  },
+  {
+    id: 4,
+    title: "Payment completed",
+    description: "₹2,500 creator payment was processed.",
+    time: "Yesterday",
+    type: "payment",
+  },
+];

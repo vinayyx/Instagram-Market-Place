@@ -18,12 +18,17 @@ import Withdrawals from "./Creator/pages/Withdrawals";
 import MyProfile from "./Creator/pages/MyProfile";
 import Settings from "./Creator/pages/Settings";
 
-
 //IMPORTS FOR BRAND
 import BrandSignup from "./Brand/Auth/BrandSinup";
+import BrandOverview from "./Brand/pages/Overview";
+import ExploreCreators from "./Brand/pages/ExploreCreators";
+import CreatorDetails from "./Brand/pages/CreatorDetails";
+import MyCampaigns from "./Brand/pages/MyCampaigns";
+import BrandCampaignDetails from "./Brand/pages/CampaignDetails.jsx";
 
 //LAYOUTS
 import CreatorLayout from "./Creator/layouts/CreatorLayout";
+import BrandLayout from "./Brand/layouts/BrandLayout";
 
 function App() {
   return (
@@ -48,6 +53,15 @@ function App() {
           <Route path="withdrawals" element={<Withdrawals />} />
           <Route path="profile" element={<MyProfile />} />
           <Route path="settings" element={<Settings />} />
+        </Route>
+
+        {/* BRAND ROUTES */}
+        <Route path="/brand" element={<BrandLayout />}>
+          <Route index element={<BrandOverview />} />
+          <Route path="creators" element={<ExploreCreators />} />
+          <Route path="creators/:username" element={<CreatorDetails />} />
+          <Route path="campaigns" element={<MyCampaigns />} />
+          <Route path="campaigns/:campaignId" element={<BrandCampaignDetails />} />
         </Route>
       </Routes>
     </div>
