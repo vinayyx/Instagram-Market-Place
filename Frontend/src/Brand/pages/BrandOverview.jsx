@@ -12,7 +12,7 @@ import {
   recentSubmissions,
   budgetData,
   recentActivities,
-} from "../../Brand/Data/overviewData"
+} from "../Data/overviewData"
 
 import WelcomeHeader from "../Components/Overview/WelcomeHeader";
 import StatCard from "../Components/Overview/StatCard";
@@ -49,7 +49,7 @@ const SectionHeader = ({ title, description, link, linkText = "View All" }) => (
   </div>
 );
 
-const Overview = () => {
+const BrandOverview = () => {
   const [dateRange, setDateRange] = useState("30 Days");
 
   const handleApprove = (application) => {
@@ -227,4 +227,4 @@ const Overview = () => {
   );
 };
 
-export default Overview;
+export default BrandOverview;

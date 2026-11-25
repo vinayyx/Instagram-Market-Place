@@ -20,7 +20,7 @@ import Settings from "./Creator/pages/Settings";
 
 //IMPORTS FOR BRAND
 import BrandSignup from "./Brand/Auth/BrandSinup";
-import BrandOverview from "./Brand/pages/Overview";
+import BrandOverview from "./Brand/pages/BrandOverview.jsx";
 import ExploreCreators from "./Brand/pages/ExploreCreators";
 import CreatorDetails from "./Brand/pages/CreatorDetails";
 import MyCampaigns from "./Brand/pages/MyCampaigns";
