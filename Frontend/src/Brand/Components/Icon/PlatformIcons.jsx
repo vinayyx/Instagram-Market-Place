@@ -15,7 +15,14 @@ export const InstagramIcon = ({ size = 16, className = "" }) => (
         <stop offset="100%" stopColor="#4F5BD5" />
       </linearGradient>
     </defs>
-    <rect x="2" y="2" width="20" height="20" rx="6" fill="url(#ig-brand-grad)" />
+    <rect
+      x="2"
+      y="2"
+      width="20"
+      height="20"
+      rx="6"
+      fill="url(#ig-brand-grad)"
+    />
     <circle
       cx="12"
       cy="12"
@@ -41,7 +48,24 @@ export const YouTubeIcon = ({ size = 16, className = "" }) => (
   </svg>
 );
 
+export const FacebookIcon = ({ size = 16, className = "" }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    className={className}
+    aria-hidden="true"
+  >
+    <rect x="2" y="2" width="20" height="20" rx="6" fill="#1877F2" />
+    <path
+      d="M16.6 14.9l.5-2.9h-2.8V10.1c0-.8.4-1.6 1.7-1.6h1.3V6c0 0-1.2-.2-2.3-.2-2.3 0-3.8 1.4-3.8 3.9V12H8.6v2.9h2.6V22h3.1v-7.1h2.3z"
+      fill="#fff"
+    />
+  </svg>
+);
+
 export const PLATFORM_ICONS = {
   Instagram: InstagramIcon,
   YouTube: YouTubeIcon,
+  Facebook: FacebookIcon,
 };

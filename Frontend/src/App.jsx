@@ -25,6 +25,16 @@ import ExploreCreators from "./Brand/pages/ExploreCreators";
 import CreatorDetails from "./Brand/pages/CreatorDetails";
 import MyCampaigns from "./Brand/pages/MyCampaigns";
 import BrandCampaignDetails from "./Brand/pages/BrandCampaignDetails.jsx";
+import CreateCampaign from "./Brand/pages/CreateCampaign.jsx";
+import Applications from "./Brand/pages/Applications.jsx";
+import ApplicationDetails from "./Brand/pages/ApplicationDetails.jsx";
+import ActiveCollaborations from "./Brand/pages/ActiveCollaborations.jsx";
+import ContentSubmissions from "./Brand/pages/ContentSubmissions.jsx";
+import SubmissionDetails from "./Brand/pages/SubmissionDetails.jsx";
+import Analytics from "./Brand/pages/Analytics.jsx";
+import WalletBilling from "./Brand/pages/WalletBilling.jsx";
+import BrandProfile from "./Brand/pages/BrandProfile.jsx";
+import BrandSettings from "./Brand/pages/BrandSettings.jsx";
 
 //LAYOUTS
 import CreatorLayout from "./Creator/layouts/CreatorLayout";
@@ -61,7 +71,23 @@ function App() {
           <Route path="creators" element={<ExploreCreators />} />
           <Route path="creators/:username" element={<CreatorDetails />} />
           <Route path="campaigns" element={<MyCampaigns />} />
-          <Route path="campaigns/:campaignId" element={<BrandCampaignDetails />} />
+          <Route
+            path="campaigns/:campaignId"
+            element={<BrandCampaignDetails />}
+          />
+          <Route path="create-campaign" element={<CreateCampaign />} />
+          <Route path="applications" element={<Applications />} />
+          <Route
+            path="applications/:applicationId"
+            element={<ApplicationDetails />}
+          />
+          <Route path="collaborations" element={<ActiveCollaborations />} />
+          <Route path="content" element={<ContentSubmissions />} />
+          <Route path="content/:submissionId" element={<SubmissionDetails />} />
+          <Route path="analytics" element={<Analytics />} />
+          <Route path="wallet" element={<WalletBilling />} />
+          <Route path="profile" element={<BrandProfile />} />
+          <Route path="settings" element={<BrandSettings />} />
         </Route>
       </Routes>
     </div>
