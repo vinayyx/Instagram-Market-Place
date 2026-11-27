@@ -1,6 +1,6 @@
-
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useBrand } from "../../hooks/useBrand";
 
 import {
   ArrowLeft,
@@ -15,16 +15,14 @@ import {
 } from "lucide-react";
 
 import { PLATFORM_ICONS } from "../Components/Icon/PlatformIcons";
-import { creators } from "../../BrandData/creatorsData";
 
 const FALLBACK_COVER =
   "data:image/svg+xml;utf8," +
   encodeURIComponent(
-    `<svg xmlns='http://www.w3.org/2000/svg' width='800' height='300'><rect width='100%' height='100%' fill='#1c1f1c'/></svg>`
+    `<svg xmlns='http://www.w3.org/2000/svg' width='800' height='300'><rect width='100%' height='100%' fill='#1c1f1c'/></svg>`,
   );
 
-const getInitial = (name = "") =>
-  name.trim().charAt(0).toUpperCase() || "C";
+const getInitial = (name = "") => name.trim().charAt(0).toUpperCase() || "C";
 
 const SectionTitle = ({ children }) => (
   <h3 className="text-sm font-semibold text-white sm:text-[15px]">
@@ -33,25 +31,41 @@ const SectionTitle = ({ children }) => (
 );
 
 const CreatorDetails = () => {
-  const { username } = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
+
+  const {
+    creatorDataById,
+    creatorDetailsLoading,
+    creatorDetailsError,
+    fetchCreatorById,
+  } = useBrand();
 
   const [isShortlisted, setIsShortlisted] = useState(false);
 
-  // Dummy data se creator find kar rahe hain
-  const creator = creators.find(
-    (item) => item.username === username
-  );
+  useEffect(() => {
+    if (id) {
+      fetchCreatorById(id).catch(() => {});
+    }
+  }, [id, fetchCreatorById]);
 
-  if (!creator) {
+  const creator = creatorDataById;
+
+  if (creatorDetailsLoading) {
+    return (
+      <div className="flex min-h-[60vh] items-center justify-center text-sm text-gray-400">
+        Loading creator profile...
+      </div>
+    );
+  }
+
+  if (creatorDetailsError || !creator) {
     return (
       <div className="flex min-h-[60vh] flex-col items-center justify-center text-center">
-        <h2 className="text-xl font-bold text-white">
-          Creator not found
-        </h2>
+        <h2 className="text-xl font-bold text-white">Creator not found</h2>
 
         <p className="mt-2 text-sm text-gray-500">
-          This creator profile does not exist.
+          {creatorDetailsError || "This creator profile does not exist."}
         </p>
 
         <button
@@ -64,11 +78,11 @@ const CreatorDetails = () => {
     );
   }
 
-  const platforms = creator.platforms ?? [];
-  const contentTypes = creator.contentTypes ?? [];
+  const platforms = creator.platforms || [];
+  const contentTypes = creator.contentTypes || [];
   const audience = creator.audience;
-  const isAvailable = creator.availability === "Available";
 
+  const isAvailable = creator.availability === "Available";
   const stats = [
     {
       label: "Followers",
@@ -82,15 +96,12 @@ const CreatorDetails = () => {
     },
     {
       label: "Engagement",
-      value:
-        creator.engagement != null
-          ? `${creator.engagement}%`
-          : "-",
+      value: `${creator.engagement}%`,
       icon: TrendingUp,
     },
     {
-      label: "Campaigns",
-      value: creator.completedCampaigns,
+      label: "Avg. Likes",
+      value: creator.avgLikes?.toLocaleString("en-IN") || "0",
       icon: Check,
     },
   ];
@@ -109,7 +120,6 @@ const CreatorDetails = () => {
 
   return (
     <div className="mx-auto w-full max-w-7xl space-y-5 pb-8">
-
       {/* BACK BUTTON */}
       <button
         type="button"
@@ -122,7 +132,6 @@ const CreatorDetails = () => {
 
       {/* MAIN PROFILE CARD */}
       <div className="overflow-hidden rounded-2xl border border-white/[0.07] bg-[#171917]">
-
         {/* COVER */}
         <div className="relative h-36 overflow-hidden bg-[#1c1f1c] sm:h-52">
           <img
@@ -139,10 +148,8 @@ const CreatorDetails = () => {
         </div>
 
         <div className="px-4 pb-6 sm:px-7 sm:pb-8">
-
           {/* PROFILE HEADER */}
           <div className="relative z-10 -mt-12 flex flex-col gap-4 sm:-mt-14 sm:flex-row sm:items-end sm:justify-between">
-
             <div className="flex min-w-0 items-end gap-3">
               {creator.avatar ? (
                 <img
@@ -189,11 +196,7 @@ const CreatorDetails = () => {
                   : "bg-[#D0FF71] text-black hover:bg-[#c2f45f]"
               }`}
             >
-              {isShortlisted ? (
-                <Check size={15} />
-              ) : (
-                <Bookmark size={15} />
-              )}
+              {isShortlisted ? <Check size={15} /> : <Bookmark size={15} />}
 
               {isShortlisted ? "Shortlisted" : "Add to Shortlist"}
             </button>
@@ -201,7 +204,6 @@ const CreatorDetails = () => {
 
           {/* BASIC INFO */}
           <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-gray-400">
-
             {creator.location && (
               <span className="flex min-w-0 items-center gap-1.5">
                 <MapPin size={14} className="shrink-0" />
@@ -269,11 +271,8 @@ const CreatorDetails = () => {
               <SectionTitle>Audience Insights</SectionTitle>
 
               <div className="mt-3 rounded-xl border border-white/[0.07] bg-[#101210] p-4">
-
                 <div className="flex items-center justify-between gap-3 text-xs">
-                  <span className="text-gray-400">
-                    Female Audience
-                  </span>
+                  <span className="text-gray-400">Female Audience</span>
 
                   <span className="font-semibold text-white">
                     {audience.female}%
@@ -286,7 +285,7 @@ const CreatorDetails = () => {
                     style={{
                       width: `${Math.min(
                         100,
-                        Math.max(0, Number(audience.female) || 0)
+                        Math.max(0, Number(audience.female) || 0),
                       )}%`,
                     }}
                   />
@@ -295,9 +294,7 @@ const CreatorDetails = () => {
                 <div className="mt-4 grid grid-cols-1 gap-3 min-[420px]:grid-cols-3">
                   {audienceItems.map((item) => (
                     <div key={item.label} className="min-w-0">
-                      <p className="text-[11px] text-gray-500">
-                        {item.label}
-                      </p>
+                      <p className="text-[11px] text-gray-500">{item.label}</p>
 
                       <p className="mt-1 truncate text-sm font-semibold text-white">
                         {item.value}
@@ -327,41 +324,47 @@ const CreatorDetails = () => {
             </section>
           )}
 
-          {/* PRICE + PLATFORMS */}
-          <section className="mt-7 flex flex-col gap-4 border-t border-white/[0.07] pt-5 sm:flex-row sm:items-center sm:justify-between">
+          {/* BEST REELS */}
+          {creator.bestReels?.length > 0 && (
+            <section className="mt-7">
+              <SectionTitle>Best Performing Reels</SectionTitle>
 
-            <div>
-              <p className="text-[11px] text-gray-500">
-                Starting Collaboration Price
-              </p>
+              <div className="mt-3 space-y-3">
+                {creator.bestReels.map((reel, index) => (
+                  <div
+                    key={reel._id || index}
+                    className="flex flex-col gap-3 rounded-xl border border-white/[0.07] bg-[#101210] p-4 sm:flex-row sm:items-center sm:justify-between"
+                  >
+                    <div>
+                      <p className="text-sm font-semibold text-white">
+                        Reel {index + 1}
+                      </p>
 
-              <p className="mt-1 text-2xl font-bold text-[#D0FF71]">
-                ₹{Number(creator.startingPrice ?? 0).toLocaleString("en-IN")}
+                      <div className="mt-2 flex flex-wrap gap-3 text-xs text-gray-400">
+                        <span>{reel.views?.toLocaleString("en-IN")} views</span>
+                        <span>{reel.likes?.toLocaleString("en-IN")} likes</span>
+                        <span>
+                          {reel.comments?.toLocaleString("en-IN")} comments
+                        </span>
+                        <span>
+                          {reel.shares?.toLocaleString("en-IN")} shares
+                        </span>
+                      </div>
+                    </div>
 
-                <span className="text-xs font-normal text-gray-500">
-                  {" "}/ post
-                </span>
-              </p>
-            </div>
-
-            {platforms.length > 0 && (
-              <div className="flex flex-wrap items-center gap-2">
-                {platforms.map((platform) => {
-                  const Icon = PLATFORM_ICONS[platform];
-
-                  return (
-                    <span
-                      key={platform}
-                      className="flex items-center gap-2 rounded-xl border border-white/10 px-3 py-2 text-xs text-gray-300"
+                    <a
+                      href={reel.reelLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-semibold text-[#D0FF71] hover:underline"
                     >
-                      {Icon ? <Icon size={16} /> : <Users size={15} />}
-                      {platform}
-                    </span>
-                  );
-                })}
+                      View Reel ↗
+                    </a>
+                  </div>
+                ))}
               </div>
-            )}
-          </section>
+            </section>
+          )}
 
           {/* NOTE */}
           <p className="mt-5 flex items-start gap-2 text-[11px] leading-relaxed text-gray-600">

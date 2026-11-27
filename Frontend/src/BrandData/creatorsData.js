@@ -1,14 +1,18 @@
 
 export const creatorCategories = [
-  "All Categories",
-  "Fashion",
-  "Beauty",
+  "Fashion & Beauty",
+  "Fitness & Health",
   "Technology",
-  "Fitness",
-  "Lifestyle",
-  "Food",
-  "Travel",
   "Gaming",
+  "Travel",
+  "Food",
+  "Lifestyle",
+  "Education",
+  "Entertainment",
+  "Finance",
+  "Photography",
+  "Comedy",
+  "Other",
 ];
 
 export const creators = [

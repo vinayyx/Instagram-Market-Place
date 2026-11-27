@@ -1,5 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 
+//PROTECTED ROUTE
+import ProtectedRoute from "./routes/ProtectedRoute.jsx";
+import PublicRoute from "./routes/PublicRoute.jsx";
+
 //IMPORTS FOR WEBISTE
 import Home from "./Web/Home";
 import AccountType from "./Web/AccountType";
@@ -45,49 +49,58 @@ function App() {
     <div>
       <Routes>
         {/* WEBSITE ROUTES */}
-        <Route path="/" element={<Home />} />
-        <Route path="/account-type" element={<AccountType />} />
-        <Route path="/creator-singup" element={<CreatorSignup />} />
-        <Route path="/brand-singup" element={<BrandSignup />} />
-        <Route path="/login" element={<Login />} />
+        <Route element={<PublicRoute />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/account-type" element={<AccountType />} />
+          <Route path="/creator-singup" element={<CreatorSignup />} />
+          <Route path="/brand-singup" element={<BrandSignup />} />
+          <Route path="/login" element={<Login />} />
+        </Route>
 
         {/* CREATOR ROUTES */}
-        <Route path="/creator" element={<CreatorLayout />}>
-          <Route index element={<Overview />} />
-          <Route path="campaigns" element={<ExploreCampaigns />} />
-          <Route path="campaigns/:id" element={<CampaignDetails />} />
-          <Route path="applications" element={<MyApplications />} />
-          <Route path="active-campaigns" element={<ActiveCampaigns />} />
-          <Route path="content" element={<MyContent />} />
-          <Route path="earnings" element={<Earnings />} />
-          <Route path="withdrawals" element={<Withdrawals />} />
-          <Route path="profile" element={<MyProfile />} />
-          <Route path="settings" element={<Settings />} />
+        <Route element={<ProtectedRoute allowedRoles={["creator"]} />}>
+          <Route path="/creator" element={<CreatorLayout />}>
+            <Route index element={<Overview />} />
+            <Route path="campaigns" element={<ExploreCampaigns />} />
+            <Route path="campaigns/:id" element={<CampaignDetails />} />
+            <Route path="applications" element={<MyApplications />} />
+            <Route path="active-campaigns" element={<ActiveCampaigns />} />
+            <Route path="content" element={<MyContent />} />
+            <Route path="earnings" element={<Earnings />} />
+            <Route path="withdrawals" element={<Withdrawals />} />
+            <Route path="profile" element={<MyProfile />} />
+            <Route path="settings" element={<Settings />} />
+          </Route>
         </Route>
 
         {/* BRAND ROUTES */}
-        <Route path="/brand" element={<BrandLayout />}>
-          <Route index element={<BrandOverview />} />
-          <Route path="creators" element={<ExploreCreators />} />
-          <Route path="creators/:username" element={<CreatorDetails />} />
-          <Route path="campaigns" element={<MyCampaigns />} />
-          <Route
-            path="campaigns/:campaignId"
-            element={<BrandCampaignDetails />}
-          />
-          <Route path="create-campaign" element={<CreateCampaign />} />
-          <Route path="applications" element={<Applications />} />
-          <Route
-            path="applications/:applicationId"
-            element={<ApplicationDetails />}
-          />
-          <Route path="collaborations" element={<ActiveCollaborations />} />
-          <Route path="content" element={<ContentSubmissions />} />
-          <Route path="content/:submissionId" element={<SubmissionDetails />} />
-          <Route path="analytics" element={<Analytics />} />
-          <Route path="wallet" element={<WalletBilling />} />
-          <Route path="profile" element={<BrandProfile />} />
-          <Route path="settings" element={<BrandSettings />} />
+        <Route element={<ProtectedRoute allowedRoles={["brand"]} />}>
+          <Route path="/brand" element={<BrandLayout />}>
+            <Route index element={<BrandOverview />} />
+            <Route path="creators" element={<ExploreCreators />} />
+            <Route path="creators/:id" element={<CreatorDetails />} />
+            <Route path="campaigns" element={<MyCampaigns />} />
+            <Route
+              path="campaigns/:campaignId"
+              element={<BrandCampaignDetails />}
+            />
+            <Route path="create-campaign" element={<CreateCampaign />} />
+            <Route path="applications" element={<Applications />} />
+            <Route
+              path="applications/:applicationId"
+              element={<ApplicationDetails />}
+            />
+            <Route path="collaborations" element={<ActiveCollaborations />} />
+            <Route path="content" element={<ContentSubmissions />} />
+            <Route
+              path="content/:submissionId"
+              element={<SubmissionDetails />}
+            />
+            <Route path="analytics" element={<Analytics />} />
+            <Route path="wallet" element={<WalletBilling />} />
+            <Route path="profile" element={<BrandProfile />} />
+            <Route path="settings" element={<BrandSettings />} />
+          </Route>
         </Route>
       </Routes>
     </div>
